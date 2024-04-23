@@ -1,8 +1,6 @@
 import streamlit as st
-from streamlit_folium import folium_static
-import folium
 import ee
-import watergeo
+import geemap
 
 markdown = """
 Web App URL: <https://watergeo.streamlit.app/>
@@ -19,19 +17,15 @@ st.title("Google Earth Engine")
 # Initialize Earth Engine
 ee.Initialize()
 
-# Create a folium map
-folium_map = folium.Map(location=[40, -100], zoom_start=4)
+with st.expander("See source code"):
+    with st.echo():
+        # Create a geemap map
+        m = geemap.Map(center=[40, -100], zoom=4)
 
-# Add Earth Engine data or layers to the map
-image = ee.Image('JRC/GSW1_2/GlobalSurfaceWater')
-vis_params = {'bands': ['occurrence'], 'min': 0, 'max': 100, 'palette': ['blue']}
-ee_image = folium.TileLayer(
-    tiles=image.getMapId(vis_params)['tile_fetcher'].url_format,
-    attr='Google Earth Engine',
-    overlay=True,
-    name='Global Surface Water',
-)
-folium_map.add_child(ee_image)
+        # Add Earth Engine data or layers to the map
+        image = ee.Image('JRC/GSW1_3/GlobalSurfaceWater')
+        vis_params = {'bands': ['occurrence'], 'min': 0, 'max': 100, 'palette': ['blue']}
+        m.addLayer(image, vis_params, 'Global Surface Water')
 
 # Display the map in Streamlit
-folium_static(folium_map)
+m.to_streamlit()
