@@ -8,4 +8,4 @@ owslib
 streamlit
 watergeo
 ee
-streamlit-folium
+streamlit_folium
