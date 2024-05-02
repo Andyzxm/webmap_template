@@ -15,11 +15,11 @@ logo = "https://images-platform.99static.com/7WcMmZPzGbVHYpeaib5FcOYR314=/100x10
 st.sidebar.image(logo)
 
 # Customize page title
-st.title("Streamlit for Geospatial Applications")
+st.title("Watergeo-webmap example for Geospatial Applications")
 
 st.markdown(
     """
-    This multipage app template demonstrates various interactive web apps created using [streamlit](https://streamlit.io) and [leafmap](https://leafmap.org). It is an open-source project and you are very welcome to contribute to the [GitHub repository](https://github.com/Andyzxm/webmap_template).
+    This multipage webmap demonstrates various interactive web apps created using [streamlit](https://streamlit.io) and [watergeo](andyzxm.github.io/watergeo/). It is an open-source project and you are very welcome to contribute to the [GitHub repository](https://github.com/Andyzxm/webmap_template).
     """
 )
 
@@ -36,5 +36,5 @@ markdown = """
 st.markdown(markdown)
 
 m = leafmap.Map(minimap_control=True)
-m.add_basemap("OpenTopoMap")
+m.add_basemap("USGS Hydrography")
 m.to_streamlit(height=500)

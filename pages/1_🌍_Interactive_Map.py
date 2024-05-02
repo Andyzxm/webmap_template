@@ -12,7 +12,7 @@ logo = "https://images-platform.99static.com/7WcMmZPzGbVHYpeaib5FcOYR314=/100x10
 st.sidebar.image(logo)
 
 
-st.title("Interactive Map")
+st.title("Interactive Map with Watergeo")
 
 col1, col2 = st.columns([4, 1])
 options = list(leafmap.basemaps.keys())
